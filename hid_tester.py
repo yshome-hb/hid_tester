@@ -83,8 +83,8 @@ for device in all_devices:
                 
             try:
                 device.open()
+                device.set_raw_data_handler(rx_handler)
                 for report in device.find_output_reports():
-                    print("1111")
                     raw_report_data = report.get_raw_data()
                     if raw_report_data[0] != int(args.rid, 16):
                         continue
@@ -95,10 +95,11 @@ for device in all_devices:
                         raw_report_data.append(b)
                     report.set_raw_data(raw_report_data)
                     report.send()
+                    time.sleep(int(1))
                     exit(0)
                     
                 print("Report with specefied ID not found")
-                exit(-1)
+                continue
                         
             finally:
                 device.close()      

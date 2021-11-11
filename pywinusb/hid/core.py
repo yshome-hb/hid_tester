@@ -1324,9 +1324,9 @@ class HidReport(object):
         #pre-parsed data should exist
         assert(self.__hid_object.is_opened())
         #valid length
-        if len(raw_data) != self.__raw_report_size:
-            raise HIDError( "Report size has to be %d elements (bytes)" \
-                % self.__raw_report_size )
+        # if len(raw_data) != self.__raw_report_size:
+        #     raise HIDError( "Report size has to be %d elements (bytes)" \
+        #         % self.__raw_report_size )
         # copy to internal storage
         self.__alloc_raw_data(raw_data)
 
